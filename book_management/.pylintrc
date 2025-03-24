@@ -1,0 +1,85 @@
+[MASTER]
+# Add the Django settings module
+init-hook='import sys; sys.path.append(".")'
+ignore=migrations
+load-plugins=pylint_django
+django-settings-module=book_management.settings
+
+# Use multiple processes to speed up Pylint (use "0" for auto)
+jobs=0
+
+[MESSAGES CONTROL]
+# Disable specific warnings
+disable=
+    # Django-specific
+    imported-auth-user,
+    invalid-name,
+    no-member,
+    missing-module-docstring,
+    # DRF-specific
+    unused-argument,
+    too-many-ancestors,
+    # Import-related
+    import-error,
+    wrong-import-order,
+    wrong-import-position,
+    cyclic-import,
+    # Others
+    too-few-public-methods,
+    protected-access,
+    broad-except
+
+[FORMAT]
+# Maximum number of characters on a single line
+max-line-length=100
+
+# Maximum number of lines in a module
+max-module-lines=2000
+
+# String used as indentation unit (2 spaces, 4 spaces, tabs)
+indent-string='    '
+
+[BASIC]
+# Regular expression which should only match function or class names
+function-rgx=[a-z_][a-z0-9_]{2,50}$
+class-rgx=[A-Z_][a-zA-Z0-9_]+$
+argument-rgx=[a-z_][a-z0-9_]{2,30}$
+variable-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Good variable names
+good-names=i,j,k,ex,Run,_,pk,id,up
+
+[SIMILARITIES]
+# Minimum lines number of a similarity
+min-similarity-lines=10
+
+# Ignore imports when computing similarities
+ignore-imports=yes
+
+[TYPECHECK]
+# List of module names for which member attributes should not be checked
+ignored-modules=numpy,tensorflow,torch,cv2,matplotlib,pandas
+
+# List of classes names for which member attributes should not be checked
+ignored-classes=SQLObject,WSGIRequest,Request,Response,HttpResponse
+
+[MISCELLANEOUS]
+# List of note tags to take into consideration
+notes=FIXME,XXX,TODO
+
+[DESIGN]
+# Maximum number of arguments for function / method
+max-args=10
+
+# Maximum number of locals for function / method
+max-locals=20
+
+# Maximum number of return / yield for function / method
+max-returns=8
+
+# Maximum number of statements in function / method
+max-statements=50
+
+[IMPORTS]
+# Allow wildcard imports from modules that define __all__
+allow-wildcard-with-all=yes
